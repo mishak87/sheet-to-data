@@ -16,6 +16,7 @@
 			"Mishak\\SheetToData":""
 		}
 	},
+	"target-dir": "Mishak/SheetToData",
 	"require": {
 		"php": ">=5.3.0"
 	}
