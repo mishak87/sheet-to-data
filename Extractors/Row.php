@@ -7,10 +7,10 @@ class Row extends Base {
 
 	private $columns;
 
-	public function __construct($name, $columns)
+	public function __construct($name, $children)
 	{
 		parent::__construct($name);
-		$this->columns = $columns;
+		$this->columns = $children;
 	}
 
 
