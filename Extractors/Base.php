@@ -19,18 +19,18 @@ abstract class Base {
 	}
 
 
-	private $capture = NULL;
+	private $capture = array();
 
-	protected function capture(&$line)
+	protected function capture(&$line, $name = NULL)
 	{
-		$this->capture = key($line);
+		$this->capture[$name] = key($line);
 	}
 
 
-	protected function rollback(&$line)
+	protected function rollback(&$line, $name = NULL)
 	{
-		if (NULL !== $this->capture) {
-			while ($this->capture !== key($line)) {
+		if (isset($this->capture[$name])) {
+			while ($this->capture[$name] !== key($line)) {
 				prev($line);
 			}
 		}
