@@ -41,7 +41,7 @@ class Sheet extends Nette\Object {
 
 	public function dumpHtml()
 	{
-		echo '<table border="1">';
+		echo '<table border="1" title="', count($this->rows[0]), '&times;', count($this->rows), '">';
 		foreach ($this->rows as $row) {
 			echo '<tr>';
 			foreach ($row as $col) {
