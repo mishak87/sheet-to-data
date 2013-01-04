@@ -30,8 +30,8 @@ class Column extends Base {
 			}
 			next($line);
 			return array($this->getName() => $data);
-		} catch (\Exception $e) {
-			throw new \Exception("Invalid column value '$column'.", 0, $e);
+		} catch (Value\InvalidValueException $e) {
+			throw new InvalidException("Invalid column value '$column'.", 0, $e);
 		}
 	}
 

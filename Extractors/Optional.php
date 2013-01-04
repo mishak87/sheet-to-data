@@ -19,7 +19,7 @@ class Optional extends Base {
 		try {
 			$this->capture($line);
 			return $this->child->extract($line);
-		} catch (\Exception $e) {
+		} catch (InvalidException $e) {
 			$this->rollback($line);
 			return array($this->child->getName() => NULL);
 		}

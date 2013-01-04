@@ -30,7 +30,7 @@ class Multiple extends Base {
 			try {
 				$data = $this->child->extract($line);
 				$items[] = $data[$this->child->getName()];
-			} catch (\Exception $e) {
+			} catch (InvalidException $e) {
 				break;
 			}
 			++$count;
@@ -38,7 +38,7 @@ class Multiple extends Base {
 
 		if ($count < $this->min) {
 			$this->rollback($line);
-			throw new \Exception("Multiple: Child '{$this->child->getName()}' must be repeated at least {$this->min} times.");
+			throw new InvalidException("Multiple: Child '{$this->child->getName()}' must be repeated at least {$this->min} times.");
 		}
 		return array($this->getName() => $items);
 	}

@@ -16,7 +16,7 @@ class Skip extends Base {
 	{
 		for ($i = 0; $i < $this->skip; ++$i) {
 			if (NULL === key($line)) {
-				throw new \Exception("Cannot skip past end of line.");
+				throw new InvalidException("Cannot skip past end of line.");
 			}
 			next($line);
 		}
