@@ -30,8 +30,14 @@ abstract class Base {
 	protected function rollback(&$line, $name = NULL)
 	{
 		if (isset($this->capture[$name])) {
+			// $rolls = 0;
+			// $k = key($line);
 			reset($line);
 			while ($this->capture[$name] !== key($line)) {
+				// if (++$rolls > 1000) {
+				//	dump([$this->capture, $k, key($line)]);
+				//	$debug();
+				// }
 				next($line);
 			}
 		}

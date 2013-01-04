@@ -26,15 +26,17 @@ class Multiple extends Base {
 		$items = array();
 		$count = 0;
 		$this->capture($line);
-		do {
+		while (NULL !== key($line) && ($this->max === -1 || $count < $this->max)) {
+			$this->capture($line, 'loop');
 			try {
 				$data = $this->child->extract($line);
 				$items[] = $data[$this->child->getName()];
 			} catch (InvalidException $e) {
+				$this->rollback($line, 'loop');
 				break;
 			}
 			++$count;
-		} while (NULL !== key($line) && ($this->max == -1 || $count < $this->max));
+		}
 
 		if ($count < $this->min) {
 			$this->rollback($line);
