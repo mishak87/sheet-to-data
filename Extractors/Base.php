@@ -30,8 +30,9 @@ abstract class Base {
 	protected function rollback(&$line, $name = NULL)
 	{
 		if (isset($this->capture[$name])) {
+			reset($line);
 			while ($this->capture[$name] !== key($line)) {
-				prev($line);
+				next($line);
 			}
 		}
 	}
