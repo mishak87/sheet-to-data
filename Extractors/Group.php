@@ -17,8 +17,8 @@ class Group extends Base {
 	public function extract(&$line)
 	{
 		$data = array();
-		foreach ($this->children as $children) {
-			$data[] = $children->extract($line);
+		foreach ($this->children as $child) {
+			$data[] = $child->extract($line);
 		}
 		return array($this->getName() => call_user_func_array('array_merge_recursive', $data));
 	}
