@@ -18,6 +18,9 @@ class Group extends Base {
 	{
 		$data = array();
 		foreach ($this->children as $child) {
+			if (NULL === key($line) && !$child instanceof Optional) {
+				throw new InvalidException("End reached before groups.");
+			}
 			$data[] = $child->extract($line);
 		}
 		return array($this->getName() => call_user_func_array('array_merge_recursive', $data));

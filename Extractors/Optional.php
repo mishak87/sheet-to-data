@@ -18,6 +18,9 @@ class Optional extends Base {
 	{
 		try {
 			$this->capture($line);
+			if (NULL === key($line)) {
+				throw new InvalidException('Already at the end no point in running child.');
+			}
 			return $this->child->extract($line);
 		} catch (InvalidException $e) {
 			$this->rollback($line);
